@@ -136,13 +136,18 @@
                                            callbackId:functionComponents.callBackID
                                                  args:functionComponents.args];
         }
-        decisionHandler(WKNavigationActionPolicyCancel);
+      decisionHandler(WKNavigationActionPolicyCancel);
+
+      return;
     } else if( !requestString.isFrameURL ) {
         [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
         decisionHandler(WKNavigationActionPolicyCancel);
+
+      return;
     } else {
         NSLog(@"HTTP:: %@", requestString);
     }
+
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
